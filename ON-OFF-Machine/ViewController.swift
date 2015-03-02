@@ -10,6 +10,28 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    var journalText = "Weclome To the ON / OFF Machine"
+    @IBOutlet weak var myTextField: UITextView!
+    
+    
+    
+    @IBAction func switchToggled(sender: UISwitch) {
+
+        if sender.on{
+           
+            myTextField.text =  timeNow() + "Switch ON \r" + myTextField.text
+        
+        } else{
+            
+            myTextField.text = timeNow() + "Switch OFF \r" + myTextField.text
+
+
+            
+        }
+    }
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -21,5 +43,13 @@ class ViewController: UIViewController {
     }
 
 
+    func timeNow()->String{
+     let formatter = NSDateFormatter()
+        formatter.dateFormat = "MM'/'dd  hh':'mm':'ss  "
+        let now = formatter.stringFromDate(NSDate())
+        println(now)
+        return now
+    }
+    
 }
 
